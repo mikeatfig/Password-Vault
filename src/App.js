@@ -19,28 +19,53 @@ export default class App extends Component {
 				sidebarVisible: true,
 				activeClient: null
 			},
-			clients: {
-				nextId: 2,
-				list: [
-					{
-						id: 0,
-						slug: 'a-a-aaronson',
-						name: 'A. A. Aaronson'
-					},
-					{
-						id: 1,
-						slug: 'fig',
-						name: 'FIG'
-					}
-				]
-			},
+			clients: [
+				{
+					slug: 'a-a-aaronson',
+					name: 'A. A. Aaronson',
+					properties: [
+						{
+							name: 'URL',
+							value: 'https://a-a-a.com'
+						}
+					]
+				},
+				{
+					slug: 'fig',
+					name: 'FIG',
+					properties: [
+						{
+							name: 'URL',
+							value: 'https://fig.agency'
+						}
+					],
+					groups: [
+						{
+							name: 'Web',
+							items: [
+								{
+									name: 'Admin',
+									url: 'https://fig.agency/admin',
+									user: 'admin',
+									pass: 'pass'
+								},
+								{
+									name: 'FTP',
+									url: '',
+									user: 'admin',
+									pass: 'pass'
+								}
+							]
+						}
+					]
+				}
+			],
 			errors: []
 		}
 		this.nextId = this.nextId.bind(this)
 		this.showSidebar = this.showSidebar.bind(this)
 		this.hideSidebar = this.hideSidebar.bind(this)
 		this.addClient = this.addClient.bind(this)
-		this.loadClient = this.loadClient.bind(this)
 	}
 	nextId() {
 		this.uniqueId = this.uniqueId || 0
@@ -63,7 +88,7 @@ export default class App extends Component {
 		}));
 	}
 	addClient(newClient) {
-		const newClientList = [...this.state.clients.list, {
+		const newClientList = [...this.state.clients, {
 			id: this.nextId(),
 			slug: newClient.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,''),
 			name: newClient
@@ -77,35 +102,21 @@ export default class App extends Component {
 				return 1
 			return 0
 		})
-		this.setState((state, props) => ({
-			clients: {
-				...this.state.clients,
-				list: newClientSort
-			}
-		}));
-	}
-	loadClient(clientId) {
-		this.setState((state, props) => ({
-			settings: {
-				...this.state.settings,
-				activeClient: clientId
-			}
-		}));
+		this.setState({clients: newClientSort});
 	}
 	render() {
 		return (
 			<Router>
 				<div className="App">
-					<MainWindow clientList={this.state.clients.list}>
+					<MainWindow clientList={this.state.clients}>
 						Windows go here
 					</MainWindow>
 					<Sidebar
 						tabIndex="0"
 						sidebarVisible={this.state.settings.sidebarVisible}
 						hideSidebar={this.hideSidebar}
-						clientList={this.state.clients.list}
-						addClient={this.addClient}
-						loadClient={this.loadClient} />
+						clientList={this.state.clients}
+						addClient={this.addClient} />
 					<div id="sidebar-exit"
 						style={{
 							display: this.state.settings.sidebarVisible ? 'none' : 'none',
