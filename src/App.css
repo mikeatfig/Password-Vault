@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:300,400,700");
+#header {
+  background: #4b2680; }
+  #header, #header a {
+    color: #fefefe; }
+
+input[type="text"] {
+  appearance: none;
+  border: none;
+  box-shadow: none;
+  background: none;
+  padding: 0.25em; }
+
+input[type="button"],
+input[type="submit"],
+button {
+  appearance: none;
+  border: none;
+  box-shadow: none;
+  background: none;
+  color: white;
+  padding: 10px; }
+  input[type="button"]:hover,
+  input[type="submit"]:hover,
+  button:hover {
+    background-color: rgba(254, 254, 254, 0.1); }
+
+a {
+  color: #17141f;
+  text-decoration: none; }
+  a:hover, a:focus {
+    color: #17141f; }
+
+.App {
+  display: grid;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  grid-template-columns: 250px 1fr;
+  user-select: none; }
+
+#sidebar {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background-color: #17141f;
+  color: #fefefe;
+  order: 1; }
+  #sidebar a {
+    color: #fefefe; }
+    #sidebar a:hover, #sidebar a:focus {
+      color: #b19dd8; }
+
+#main {
+  order: 2;
+  display: grid;
+  grid-template-rows: 50px 1fr; }
+
+#header {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px; }
+  #header h1 {
+    flex: 0 1 auto;
+    margin: 0; }
+  #header form {
+    flex: 1 1 auto;
+    padding: 0 20px;
+    text-align: right; }
+
+.sidetitle {
+  display: block;
+  padding: 10px;
+  font-weight: bold; }
+
+.client-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  .client-list a {
+    display: block;
+    padding: 10px;
+    background: #17141f;
+    color: #b19dd8; }
+    .client-list a:hover, .client-list a:focus {
+      background: #2c2541;
+      color: #b19dd8; }
+
+.main-window {
+  padding: 10px; }
+
+.add-client {
+  padding: 10px;
+  border-top: 1px solid #2c2541; }
+  .add-client input[type='text'] {
+    border: 1px solid #392e5c;
+    background: #0e0c13;
+    color: #faf9fa; }
+    .add-client input[type='text']:focus {
+      border-color: #7d5bbe;
+      box-shadow: 0 0 6px -2px #7d5bbe; }
