@@ -1,8 +1,24 @@
-import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom'
+import React, { Component } from 'react'
+import { Link, Route, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import Notifications from './Notifications'
 import Client from './Client'
 
-export default class MainWindow extends Component {
+const mapStateToProps = (state, props) => {
+	return {
+		clients: state.clients
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		// newClient: (client) => {
+		// 	dispatch(addClient(client))
+		// }
+	}
+}
+
+class MainWindow extends Component {
 	render() {
 		return (
 			<main id="main">
@@ -12,13 +28,14 @@ export default class MainWindow extends Component {
 						<input type="text" placeholder="Search"/>
 						<input type="submit" value="Search"/>
 					</form>
+					<Notifications />
 				</div>
 				<div className="main-window">
 					<Route path="/" exact={true} render={() => (
 						"Select a client"
 					)} />
 					<Route path="/:clientinitial/:clientslug" render={({match}) => {
-						const client = this.props.clientList.find(client => (client.slug === match.params.clientslug))
+						const client = this.props.clients.find(client => (client.slug === match.params.clientslug))
 						if (client)
 							return (
 								<Client
@@ -31,3 +48,5 @@ export default class MainWindow extends Component {
 		);
 	}
 }
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainWindow))

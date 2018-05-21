@@ -1,7 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { addClient } from '../actions'
+import { connect } from 'react-redux'
 import ClientList from './ClientList'
 
-export default class Sidebar extends Component {
+const mapStateToProps = (state, props) => {
+	return {
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		newClient: (client) => {
+			dispatch(addClient(client))
+		}
+	}
+}
+
+class Sidebar extends Component {
 	constructor() {
 		super()
 
@@ -19,8 +34,8 @@ export default class Sidebar extends Component {
 		e.preventDefault()
 		const client = this.state.newClient.replace(/^\s+|\s+$/g,"")
 		if (client)
-			this.props.addClient(this.state.newClient)
-			this.setState({newClient: ""});
+			this.props.newClient(client)
+		this.setState({newClient: ""})
 	}
 	render() {
 		// const style = {
@@ -33,16 +48,16 @@ export default class Sidebar extends Component {
 		// }
 		return (
 			<div id="sidebar">
-					<ClientList
-						clients={this.props.clientList}
-						{...this.props} />
-					<div className="add-client">
-						<form onSubmit={this.newClient}>
-							<input type="text" value={this.state.newClient} placeholder="Client Name&hellip;" onChange={this.changeClient}/>
-							<input type="submit" value="Add"/>
-						</form>
-					</div>
+				<ClientList />
+				<div className="add-client">
+					<form onSubmit={this.newClient}>
+						<input type="text" value={this.state.newClient} placeholder="Client Name&hellip;" onChange={this.changeClient}/>
+						<input type="submit" value="Add"/>
+					</form>
+				</div>
 			</div>
 		);
 	}
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)

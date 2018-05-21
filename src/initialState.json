@@ -1,0 +1,106 @@
+{
+	"user": {
+		"name": "Mike Ross",
+		"email": "mike@fig.agency",
+		"preferences": {}
+	},
+	"settings": {
+		"sidebarVisible": true,
+		"activeClient": null
+	},
+	"clients": [
+		{
+			"name": "A. A. Aaronson",
+			"slug": "a-a-aaronson",
+			"properties": [
+				{
+					"name": "URL",
+					"value": "https://a-a-a.com"
+				}
+			]
+		},
+		{
+			"name": "FIG",
+			"slug": "fig",
+			"properties": [
+				{
+					"name": "URL",
+					"value": "https://fig.agency"
+				}
+			],
+			"groups": [
+				{
+					"name": "Web",
+					"items": [
+						{
+							"name": "CMS",
+							"url": "https://fig.agency/admin",
+							"details": [
+								{
+									"name": "Username",
+									"value": "admin"
+								},
+								{
+									"name": "Password",
+									"value": "pass"
+								}
+							]
+						},
+						{
+							"name": "FTP",
+							"url": "",
+							"details": [
+								{
+									"name": "Host",
+									"value": "ftp.fig.agency"
+								},
+								{
+									"name": "Username",
+									"value": "admin"
+								},
+								{
+									"name": "Password",
+									"value": "pass"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Social",
+					"items": [
+						{
+							"name": "Facebook",
+							"url": "https://www.facebook.com/Fig.Agency/",
+							"details": [
+								{
+									"name": "Username",
+									"value": "admin"
+								},
+								{
+									"name": "Password",
+									"value": "pass"
+								}
+							]
+						},
+						{
+							"name": "Twitter",
+							"url": "https://twitter.com/fig_agency",
+							"details": [
+								{
+									"name": "Handle",
+									"value": "@Fig_Agency"
+								},
+								{
+									"name": "Password",
+									"value": "pass"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"errors": []
+}
