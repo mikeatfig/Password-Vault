@@ -23,7 +23,7 @@ class MainWindow extends Component {
 		return (
 			<main id="main">
 				<div id="header">
-					<h1 className="header-item"><Link to="/">FIG Pass</Link></h1>
+					<h1 className="header-item"><Link to="/">Password Vault</Link></h1>
 					<form action="" className="header-item">
 						<input type="text" placeholder="Search"/>
 						<input type="submit" value="Search"/>
