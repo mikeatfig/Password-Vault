@@ -150,7 +150,7 @@ a {
 		.notifications {
 			flex: 0 0 auto;
 		}
-		.notifiaction-list {
+		.notification-list {
 			position: absolute;
 			top: 100%;
 			right: 0;
@@ -276,18 +276,21 @@ a {
 	}
 }
 
-.add-client {
-	padding: $padding;
-	border-top: 1px solid $darker-gray;
-	input[type='text'] {
-		border: 1px solid #392e5c;
-		background: #0e0c13;
-		// background: $darker-gray;
-		// color: $white;
-		color: #faf9fa;
-		&:focus {
-			border-color: #7d5bbe;
-			box-shadow: 0 0 6px -2px #7d5bbe;
+#sidebar {
+	.search-clients,
+	.add-client {
+		padding: $padding;
+		border-top: 1px solid $darker-gray;
+		input[type='text'] {
+			border: 1px solid #392e5c;
+			background: #0e0c13;
+			// background: $darker-gray;
+			// color: $white;
+			color: #faf9fa;
+			&:focus {
+				border-color: #7d5bbe;
+				box-shadow: 0 0 6px -2px #7d5bbe;
+			}
 		}
 	}
 }

@@ -1,7 +1,7 @@
 import C from '../constants'
 import { combineReducers } from 'redux'
 
-export const user = (state=null, action) => (
+export const users = (state=null, action) => (
 	state
 )
 
@@ -26,6 +26,15 @@ export const activeClient = (state=null, action) => (
 		action.payload :
 		state
 )
+
+export const clientID = (state=0, action) => {
+	switch (action.type) {
+		case C.CLIENT_ID :
+			return action.payload
+		default :
+			return state
+	}
+}
 
 export const singleClient = (state={}, action) => {
 	switch (action.type) {
@@ -71,9 +80,47 @@ export const clients = (state=[], action) => {
 		case C.ADD_CLIENT_PROPERTY :
 			return singleClient(null, action)
 
+		case C.CHANGE_SUGGESTIONS :
+			return
+
 		default :
 			return state
 	}
+}
+
+export const fetching = (state=false, action) => {
+
+	switch(action.type) {
+
+		case C.SEARCH_CLIENTS :
+			return true
+
+		case C.CANCEL_SEARCH :
+			return false
+
+		case C.CHANGE_SUGGESTIONS :
+			return false
+
+		default :
+			return state
+	}
+
+}
+
+export const suggestions = (state=[], action) => {
+
+	switch(action.type) {
+
+		case C.CLEAR_SUGGESTIONS :
+			return []
+
+		case C.CHANGE_SUGGESTIONS :
+			return action.payload
+
+		default :
+			return state
+	}
+
 }
 
 export const errors = (state=[], action) => {
@@ -90,10 +137,11 @@ export const errors = (state=[], action) => {
 }
 
 export default combineReducers({
-	user,
+	users,
 	settings: combineReducers({
 		sidebarVisible,
-		activeClient
+		activeClient,
+		clientID
 	}),
 	clients,
 	errors

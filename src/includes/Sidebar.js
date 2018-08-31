@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ClientList from './ClientList'
-import Search from './Search'
 import AddClient from './AddClient'
 
 export default class Sidebar extends Component {
@@ -16,9 +15,6 @@ export default class Sidebar extends Component {
 		return (
 			<div id="sidebar">
 				<ClientList />
-				<div className="search-clients">
-					<Search />
-				</div>
 				<AddClient />
 			</div>
 		);

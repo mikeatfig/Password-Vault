@@ -1,11 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+// import { Link } from 'react-router-dom'
 
-export default class Search extends Component {
+const mapStateToProps = (state, props) => {
+	return {
+		clients: state.clients
+	}
+}
+
+class Search extends Component {
 	constructor() {
 		super()
 
 		this.state = {
-			searchClient: ""
+			searchClient: "",
+			suggestions: []
 		}
 
 		this.changeClient = this.changeClient.bind(this)
@@ -13,24 +22,29 @@ export default class Search extends Component {
 	}
 
 	changeClient(e) {
-		this.setState({newClient: e.target.value});
+		this.setState({searchClient: e.target.value});
+		this.setState({
+			suggestions: this.props.clients.filter(client => e.target.value.toLowerCase() === client.name.substr(0, e.target.value.length).toLowerCase())
+		})
 	}
 	searchClient(e) {
 		e.preventDefault()
-		const client = this.state.newClient.replace(/^\s+|\s+$/g,"")
-		if (client)
-			this.props.newClient(client)
-		this.setState({newClient: ""})
+		// const client = this.state.searchClient.replace(/^\s+|\s+$/g,"")
+		// if (client)
+		// 	this.props.searchClient(client)
+		this.setState({searchClient: ""})
 	}
 
 	render() {
 		return (
 			<div className="search-form autocomplete">
-				<form onSubmit={this.newClient}>
-					<input type="text" value={this.state.newClient} placeholder="Client Name&hellip;" onChange={this.changeClient}/>
+				<form onSubmit={this.searchClient}>
+					<input type="text" value={this.state.searchClient} placeholder="Client Name&hellip;" onChange={this.changeClient}/>
 					<input type="submit" className="button button-submit" value="Search"/>
 				</form>
 			</div>
 		);
 	}
 }
+
+export default connect(mapStateToProps)(Search)

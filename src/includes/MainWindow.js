@@ -10,24 +10,12 @@ const mapStateToProps = (state, props) => {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		// newClient: (client) => {
-		// 	dispatch(addClient(client))
-		// }
-	}
-}
-
 class MainWindow extends Component {
 	render() {
 		return (
 			<main id="main">
 				<div id="header">
 					<h1 className="header-item"><Link to="/">Password Vault</Link></h1>
-					<form action="" className="header-item">
-						<input type="text" placeholder="Search"/>
-						<input type="submit" value="Search"/>
-					</form>
 					<Notifications />
 				</div>
 				<div className="main-window">
@@ -49,4 +37,4 @@ class MainWindow extends Component {
 	}
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainWindow))
+export default withRouter(connect(mapStateToProps)(MainWindow))

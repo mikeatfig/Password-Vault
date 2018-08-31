@@ -97,7 +97,7 @@ a {
     padding: 5px; }
     #header .notification-area .notifications {
       flex: 0 0 auto; }
-    #header .notification-area .notifiaction-list {
+    #header .notification-area .notification-list {
       position: absolute;
       top: 100%;
       right: 0;
@@ -107,11 +107,11 @@ a {
       font-size: 14px;
       margin-top: -1px;
       z-index: 5; }
-      #header .notification-area .notifiaction-list ul {
+      #header .notification-area .notification-list ul {
         margin: 0;
         padding: 0;
         list-style-type: none; }
-        #header .notification-area .notifiaction-list ul li {
+        #header .notification-area .notification-list ul li {
           position: relative;
           clear: both;
           padding: 5px 10px; }
@@ -189,13 +189,16 @@ a {
     bottom: 0;
     right: 0; }
 
-.add-client {
+#sidebar .search-clients,
+#sidebar .add-client {
   padding: 10px;
   border-top: 1px solid #2c2541; }
-  .add-client input[type='text'] {
+  #sidebar .search-clients input[type='text'],
+  #sidebar .add-client input[type='text'] {
     border: 1px solid #392e5c;
     background: #0e0c13;
     color: #faf9fa; }
-    .add-client input[type='text']:focus {
+    #sidebar .search-clients input[type='text']:focus,
+    #sidebar .add-client input[type='text']:focus {
       border-color: #7d5bbe;
       box-shadow: 0 0 6px -2px #7d5bbe; }
